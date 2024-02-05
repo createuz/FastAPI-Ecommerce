@@ -25,8 +25,7 @@ async def send_email(email: List, instance: User):
         'id': instance.id,
         'username': instance.username,
     }
-    token = jwt.encode(token_data, config_credentials['SECRET'])
-
+    token = jwt.encode(payload=token_data, key=config_credentials['SECRET'], algorithm="HS256")
     html_content = f"""
     <!DOCTYPE html>
     <head>
@@ -148,6 +147,7 @@ async def send_email(email: List, instance: User):
                         onclick="window.location.href='http://localhost:8000/verification/?token={token}';">
                     Confirm Email
                 </button>
+                <a href="http://localhost:8000/verification/?token={token}">Confirm Email</a>
             </div>
         </div>
         <div class="d-flex align-items-center justify-content-center">
