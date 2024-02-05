@@ -8,7 +8,7 @@ from models import User
 config_credentials = dotenv_values('.env')
 
 conf = ConnectionConfig(
-    MAIL_USERNAME='rajabovshohjahono3',
+    MAIL_USERNAME=config_credentials['MAIL_USERNAME'],
     MAIL_PASSWORD=config_credentials['PASS'],
     MAIL_FROM=config_credentials['EMAIL'],
     MAIL_PORT=587,
